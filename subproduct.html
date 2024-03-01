@@ -8,8 +8,8 @@
 	<!-- <style>body{opacity: 0;}</style> -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap&_v=20240229103138" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.min.css?_v=20240229103138">
+	<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap&_v=20240301140135" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240301140135">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,6 +57,7 @@
 					</div>
 					<div class="header__menu menu">
 						<button type="button" class="menu__icon icon-menu"><span></span></button>
+						<button type="button" class="menu__close icon-menu"><span></span></button>
 						<nav class="menu__body">
 							<div class="menu__column">
 								<h3 class="menu__title">
@@ -307,25 +308,25 @@
 							</svg>
 						</button>
 					</section>
-					<section class="portfolio">
+					<section class="portfolio grid-item">
 						<h3 class="portfolio__title title">
 							Наші роботи
 						</h3>
 						<div class="portfolio__head">
-							<button type="button" class="portfolio__list active">
+							<button type="button" class="portfolio__list">
 								<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M2.9502 10.4333V8.66666H14.0502V10.4333H2.9502ZM2.9502 13.5334V11.7667H14.0502V13.5334H2.9502ZM2.9502 7.33333V5.56665H14.0502V7.33333H2.9502ZM2.9502 4.23331V2.46661H14.0502V4.23331H2.9502Z" fill="#232023" />
 								</svg>
 								<span>List</span>
 							</button>
-							<button type="button" class="portfolio__grid">
+							<button type="button" class="portfolio__grid active">
 								<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M1.67969 7.33334V1.6797H7.33332V7.33334H1.67969ZM1.67969 14.3203V8.66667H7.33332V14.3203H1.67969ZM8.66665 7.33334V1.6797H14.3203V7.33334H8.66665ZM8.66665 14.3203V8.66667H14.3203V14.3203H8.66665ZM3.44637 5.56665H5.56664V3.44639H3.44637V5.56665ZM10.4333 5.56665H12.5536V3.44639H10.4333V5.56665ZM10.4333 12.5536H12.5536V10.4334H10.4333V12.5536ZM3.44637 12.5536H5.56664V10.4334H3.44637V12.5536Z" fill="#232023" />
 								</svg>
 								<span>Grid</span>
 							</button>
 						</div>
-						<div class="portfolio__slider swiper">
+						<div class="portfolio__slider swiper hide-category">
 							<div class="portfolio__wrapper swiper-wrapper">
 								<div class="portfolio__card swiper-slide">
 									<a href="" class="portfolio__img">
@@ -927,11 +928,14 @@
 							</div>
 						</div>
 					</div>
+					<button data-popup="#popup" type="button" class="about__btn btn">
+						Розпочати проект
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20240229103138"></script>
+	<script src="js/app.min.js?_v=20240301140135"></script>
 </body>
 
 </html>

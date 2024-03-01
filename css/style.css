@@ -214,6 +214,9 @@ h6 {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg)
 }
+.icon-menu.menu__close {
+  display: none
+}
 .btn {
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
@@ -531,13 +534,14 @@ body::after {
   display: flex;
   align-items: center;
   margin-bottom: 3rem;
-  border-radius: 2.75rem;
   overflow-x: auto;
   overflow-y: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none
 }
 .breadcrumbs::-webkit-scrollbar {
+  display: none;
+  -webkit-appearance: none;
   width: 0;
   height: 0
 }
@@ -759,6 +763,9 @@ body::after {
   line-height: 143%;
   color: #8c878c
 }
+.hide-category .portfolio__category {
+  display: none
+}
 .swiper-button-next {
   width: 2.25rem;
   height: 2.25rem;
@@ -931,11 +938,13 @@ textarea {
   align-items: center;
   gap: .5rem;
   overflow: auto;
+  padding-right: 1rem;
   -ms-overflow-style: none;
-  scrollbar-width: none;
-  padding-right: 1rem
+  scrollbar-width: none
 }
 .form-block__items::-webkit-scrollbar {
+  display: none;
+  -webkit-appearance: none;
   width: 0;
   height: 0
 }
@@ -1435,7 +1444,7 @@ textarea {
     column-gap: 10.25rem
   }
   .menu__column {
-    padding-top: 5rem
+    padding-top: 4.375rem
   }
   .menu__title {
     font-size: 2rem
@@ -1859,9 +1868,8 @@ textarea {
     display: none
   }
   .breadcrumbs {
-    padding: .125rem 0;
-    margin-top: .875rem;
-    margin-bottom: 0
+    padding: .125rem 1.25rem;
+    margin: .875rem -1.25rem 0 -1.25rem
   }
   .breadcrumbs__link {
     padding: .625rem .75rem
@@ -1916,13 +1924,18 @@ textarea {
   }
 }
 @media (max-width:40.62375em) {
+  .menu-open .menu {
+    order: 0
+  }
   .menu__body {
     grid-template-columns: 1fr;
+    align-content: start;
     padding-bottom: 8.75rem;
-    padding-top: 6.25rem
+    padding-top: 4.6875rem
   }
   .menu__body::before {
     content: "Меню";
+    height: 3.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1930,7 +1943,6 @@ textarea {
     text-align: center;
     font-size: 1rem;
     font-weight: 800;
-    height: 4.6875rem;
     box-shadow: 0 24px 32px 0 rgba(0,0,0,.02),0 16px 24px 0 rgba(0,0,0,.02),0 8px 16px 0 rgba(0,0,0,.02),0 0 16px 0 rgba(0,0,0,.02)
   }
   .menu__column {
@@ -1996,6 +2008,16 @@ textarea {
   .menu__contact {
     font-size: .875rem
   }
+  .menu-open .icon-menu {
+    z-index: 5
+  }
+  .menu-open .icon-menu.menu__close {
+    position: absolute;
+    top: .75rem;
+    left: 1rem;
+    display: block;
+    z-index: 15
+  }
   .page__container {
     background: url(../img/main-bg-mob.svg) center/100% repeat-y
   }
@@ -2050,6 +2072,9 @@ textarea {
   .grid-item .portfolio__text {
     font-size: .75rem
   }
+  .hide-category .portfolio__category {
+    display: block
+  }
   .header__logo {
     z-index: 5
   }
@@ -2102,15 +2127,18 @@ textarea {
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 8.9375rem;
     background: linear-gradient(360deg,#fffefc 7%,rgba(255,254,252,.72) 48.5%,rgba(255,254,252,0) 100%);
     pointer-events: none;
     z-index: 2;
     transition: opacity .3s
   }
   .about .about__items {
-    overflow: hidden;
-    height: 33.125rem
+    height: 25.9375rem;
+    overflow: hidden
+  }
+  .about .about__btn {
+    display: none
   }
   .about__more {
     display: grid;
@@ -2118,7 +2146,7 @@ textarea {
     width: 2.25rem;
     height: 2.25rem;
     background-color: #ef0a0a;
-    margin: -2.25rem auto 0;
+    margin: -2.875rem auto 0;
     position: relative;
     z-index: 3
   }
@@ -2196,6 +2224,9 @@ textarea {
   }
   .card-work__btn {
     flex: 1 1 7.1875rem
+  }
+  .portfolio__category {
+    font-size: .75rem
   }
   .review__slider .swiper-button-next {
     right: .0000000625rem
@@ -2805,14 +2836,14 @@ textarea {
   }
 }
 @media (min-width:40.62375em) and (max-width:78.75em) {
-  @supports (padding-top:clamp(0.0000000625rem ,-5.3275301158rem + 13.1143239566vw ,5rem)) {
+  @supports (padding-top:clamp(0.0000000625rem ,-4.6615888352rem + 11.4750334415vw ,4.375rem)) {
     .menu__column {
-      padding-top: clamp(.0000000625rem ,-5.3275301158rem + 13.1143239566vw ,5rem)
+      padding-top: clamp(.0000000625rem ,-4.6615888352rem + 11.4750334415vw ,4.375rem)
     }
   }
-  @supports not (padding-top:clamp(0.0000000625rem ,-5.3275301158rem + 13.1143239566vw ,5rem)) {
+  @supports not (padding-top:clamp(0.0000000625rem ,-4.6615888352rem + 11.4750334415vw ,4.375rem)) {
     .menu__column {
-      padding-top: calc(.0000000625rem + 4.9999999375 * (100vw - 40.62375rem)/ 38.12625)
+      padding-top: calc(.0000000625rem + 4.3749999375 * (100vw - 40.62375rem)/ 38.12625)
     }
   }
   @supports (margin-bottom:clamp(1.6875rem ,-0.7764827383rem + 6.0653749057vw ,4rem)) {
