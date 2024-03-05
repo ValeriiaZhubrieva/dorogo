@@ -559,6 +559,8 @@ body::after {
   line-height: 150%;
   color: #dcdcdc;
   padding: .625rem .3125rem;
+  -webkit-animation: animColor 15s infinite alternate;
+  animation: animColor 15s infinite alternate;
   transition: color .3s
 }
 .aside-block__link span {
@@ -569,7 +571,9 @@ body::after {
   transform: rotate(-180deg)
 }
 .aside-block__link path {
-  transition: fill .3s
+  transition: fill .3s;
+  -webkit-animation: animColor 15s infinite alternate;
+  animation: animColor 15s infinite alternate
 }
 .aside-block__link:active {
   color: #8a0606
@@ -890,6 +894,50 @@ body::after {
   100% {
     -webkit-transform: translate(0,0);
     transform: translate(0,0)
+  }
+}
+@-webkit-keyframes animColor {
+  0% {
+    color: #dcdcdc;
+    fill: #dcdcdc
+  }
+  25% {
+    color: #dcdcdc;
+    fill: #dcdcdc
+  }
+  50% {
+    color: #bd0808;
+    fill: #bd0808
+  }
+  75% {
+    color: #dcdcdc;
+    fill: #dcdcdc
+  }
+  100% {
+    color: #dcdcdc;
+    fill: #dcdcdc
+  }
+}
+@keyframes animColor {
+  0% {
+    color: #dcdcdc;
+    fill: #dcdcdc
+  }
+  25% {
+    color: #dcdcdc;
+    fill: #dcdcdc
+  }
+  50% {
+    color: #bd0808;
+    fill: #bd0808
+  }
+  75% {
+    color: #dcdcdc;
+    fill: #dcdcdc
+  }
+  100% {
+    color: #dcdcdc;
+    fill: #dcdcdc
   }
 }
 input[type=email],
@@ -1345,6 +1393,10 @@ textarea {
   -o-object-fit: cover;
   object-fit: cover;
   aspect-ratio: 474/474
+}
+.projects__slide.swiper-slide-prev {
+  z-index: -1!important;
+  opacity: 0!important
 }
 .projects__link {
   padding: 1rem 1.5rem;
@@ -4163,10 +4215,10 @@ textarea {
     fill: #bd0808
   }
   .aside-block__link:hover {
-    color: #bd0808
+    color: #bd0808!important
   }
   .aside-block__link:hover path {
-    fill: #bd0808
+    fill: #bd0808!important
   }
   .breadcrumbs__link:hover {
     border: 1px solid #b4b4b4;
