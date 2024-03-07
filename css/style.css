@@ -157,7 +157,7 @@ h6 {
 .menu__body {
   position: fixed;
   width: 100%;
-  height: 100svh;
+  height: 100vh;
   left: -100%;
   top: 0;
   z-index: 10;
@@ -207,6 +207,9 @@ h6 {
 }
 .menu__actions {
   grid-column: span 3
+}
+.portfolio-wrapper .menu__actions .actions-block__links {
+  display: none
 }
 .menu__contacts {
   grid-column: span 3;
@@ -378,7 +381,8 @@ body::after {
   width: 1.5rem;
   height: 1.5rem;
   display: grid;
-  place-content: center
+  place-content: center;
+  outline: 0
 }
 .popup__close path {
   transition: fill .3s
@@ -559,8 +563,6 @@ body::after {
   line-height: 150%;
   color: #dcdcdc;
   padding: .625rem .3125rem;
-  -webkit-animation: animColor 15s infinite alternate;
-  animation: animColor 15s infinite alternate;
   transition: color .3s
 }
 .aside-block__link span {
@@ -571,9 +573,7 @@ body::after {
   transform: rotate(-180deg)
 }
 .aside-block__link path {
-  transition: fill .3s;
-  -webkit-animation: animColor 15s infinite alternate;
-  animation: animColor 15s infinite alternate
+  transition: fill .3s
 }
 .aside-block__link:active {
   color: #8a0606
@@ -584,6 +584,9 @@ body::after {
 .aside-block__arrow {
   -webkit-animation: bottomTotop 2s infinite linear;
   animation: bottomTotop 2s infinite linear
+}
+.aside-block__arrow path {
+  transition: fill .3s
 }
 .title {
   font-weight: 1000;
@@ -611,7 +614,7 @@ body::after {
   border-radius: 2.75rem;
   line-height: 150%;
   white-space: nowrap;
-  transition: color .3s,border .3s
+  transition: background .3s,border .3s
 }
 .breadcrumbs__link.active {
   pointer-events: none;
@@ -621,8 +624,7 @@ body::after {
 }
 .heading-page__title {
   font-weight: 1000;
-  line-height: 136%;
-  text-transform: uppercase
+  line-height: 136%
 }
 .heading-page__title span {
   color: #ef0a0a
@@ -746,25 +748,11 @@ body::after {
   margin: 0 -1.25rem;
   position: relative
 }
-.portfolio__slider::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 30%;
-  height: 100%;
-  background: linear-gradient(270deg,#fffefc 7%,rgba(255,254,252,.72) 48.5%,rgba(255,254,252,0) 100%);
-  opacity: 0;
-  visibility: hidden;
-  transition: all .3s
-}
 .portfolio__slider .swiper-button-next {
   position: absolute;
-  right: 1.25rem;
-  top: 35%;
+  right: .3125rem;
+  top: 37%;
   z-index: 3;
-  opacity: 0;
-  visibility: hidden;
   transition: all .3s
 }
 .portfolio__items {
@@ -896,50 +884,6 @@ body::after {
     transform: translate(0,0)
   }
 }
-@-webkit-keyframes animColor {
-  0% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-  25% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-  50% {
-    color: #bd0808;
-    fill: #bd0808
-  }
-  75% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-  100% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-}
-@keyframes animColor {
-  0% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-  25% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-  50% {
-    color: #bd0808;
-    fill: #bd0808
-  }
-  75% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-  100% {
-    color: #dcdcdc;
-    fill: #dcdcdc
-  }
-}
 input[type=email],
 input[type=tel],
 input[type=text],
@@ -1006,6 +950,15 @@ input[type=text][placeholder]:not([data-placeholder-nohiden]):focus::placeholder
 textarea[placeholder]:not([data-placeholder-nohiden]):focus::placeholder {
   opacity: 0
 }
+input[type=email]::-webkit-contacts-auto-fill-button,
+input[type=tel]::-webkit-contacts-auto-fill-button,
+input[type=text]::-webkit-contacts-auto-fill-button,
+textarea::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  opacity: 0
+}
 textarea {
   resize: none;
   padding: 0 0
@@ -1014,13 +967,43 @@ textarea {
   display: grid;
   gap: 1rem
 }
+.form-block__item {
+  position: relative
+}
+.form-block__item .form-block__label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  transition: all .3s
+}
 .form-block__input,
 .form-block__textarea {
   font-weight: 800;
   font-size: 1rem;
   line-height: 150%;
-  padding: 1rem;
-  background-color: #f5f5f5
+  padding: .875rem 1rem;
+  background-color: #f5f5f5;
+  border: 2px solid #f5f5f5;
+  transition: all .3s
+}
+.form-block__input:focus,
+.form-block__input:valid,
+.form-block__textarea:focus,
+.form-block__textarea:valid {
+  padding: 1.5rem 1rem .25rem 1rem
+}
+.form-block__input:focus ~ label,
+.form-block__textarea:focus ~ label {
+  font-size: .75rem;
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px)
+}
+.form-block__input:valid ~ label,
+.form-block__textarea:valid ~ label {
+  color: #8c878c;
+  font-size: .75rem;
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px)
 }
 .form-block__services {
   width: 100%;
@@ -1060,6 +1043,10 @@ textarea {
   width: 100%;
   margin-top: 1rem
 }
+.checkbox {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent
+}
 .checkbox__input {
   position: absolute;
   width: 0;
@@ -1067,7 +1054,7 @@ textarea {
   opacity: 0
 }
 .checkbox__input:focus-visible + .checkbox__label {
-  box-shadow: 0 0 5px #000
+  outline: auto
 }
 .checkbox__input:checked + .checkbox__label {
   font-weight: 800;
@@ -1321,8 +1308,7 @@ textarea {
 .projects__title {
   align-self: end;
   font-weight: 1000;
-  line-height: 130%;
-  text-transform: uppercase
+  line-height: 130%
 }
 .projects__title:not(:last-child) {
   margin-bottom: 1.25rem
@@ -1435,7 +1421,8 @@ textarea {
   margin-bottom: .5rem
 }
 .about__more {
-  display: none
+  display: none;
+  outline: 0
 }
 .clients__body {
   display: grid;
@@ -1794,6 +1781,11 @@ textarea {
   transition-property: transform,opacity,height;
   transition-property: transform,opacity,height,-webkit-transform
 }
+@media (min-width:34.37375em) {
+  .clients__body {
+    row-gap: 3rem
+  }
+}
 @media (min-width:40.62375em) {
   .projects--reverse .projects__content {
     justify-self: end;
@@ -1829,13 +1821,13 @@ textarea {
     padding-top: 4.375rem
   }
   .menu__title {
-    font-size: 2rem
+    font-size: 1.5rem
   }
   .menu__title {
     margin-bottom: 1.5625rem
   }
   .menu__link {
-    font-size: 1.25rem
+    font-size: 1rem
   }
   .spollers:not(:last-child) {
     margin-bottom: 4rem
@@ -1880,7 +1872,12 @@ textarea {
     margin-bottom: 4rem
   }
   .we-do__items {
-    gap: 6rem
+    -webkit-column-gap: 6rem;
+    -moz-column-gap: 6rem;
+    column-gap: 6rem
+  }
+  .we-do__items {
+    row-gap: 5rem
   }
   .portfolio {
     margin-bottom: 12.25rem
@@ -1951,17 +1948,17 @@ textarea {
     font-size: 1.25rem
   }
   .promo__avatar {
-    width: 3.5rem
+    width: 3rem
   }
   .promo__avatar {
-    height: 3.5rem
+    height: 3rem
   }
   .promo__command-title {
     font-size: 1rem
   }
   .promo__banner._watcher-view {
-    -webkit-transform: scale(1.19) translate(8%,5%);
-    transform: scale(1.19) translate(8%,5%)
+    -webkit-transform: scale(1.13) translate(6%,10%);
+    transform: scale(1.13) translate(6%,10%)
   }
   .projects {
     margin-bottom: 12.25rem
@@ -2136,10 +2133,6 @@ textarea {
   }
 }
 @media (min-width:89.99875em) {
-  .promo__banner._watcher-view {
-    -webkit-transform: scale(1.4) translate(6.8%,10%);
-    transform: scale(1.4) translate(6.8%,10%)
-  }
   .hero {
     gap: 14.375rem
   }
@@ -2175,13 +2168,13 @@ textarea {
     column-gap: 2.6875rem
   }
   .menu__title {
-    font-size: 1.4375rem
+    font-size: 1.25rem
   }
   .menu__title {
     margin-bottom: .9375rem
   }
   .menu__link {
-    font-size: .8125rem
+    font-size: .875rem
   }
   .spollers:not(:last-child) {
     margin-bottom: 1.6875rem
@@ -2193,7 +2186,7 @@ textarea {
     font-size: .875rem
   }
   .title {
-    font-size: 1.4375rem
+    font-size: 1.75rem
   }
   .breadcrumbs {
     gap: .4375rem
@@ -2265,10 +2258,10 @@ textarea {
     height: .25rem
   }
   .promo__info:not(:last-child) {
-    margin-bottom: 1.625rem
+    margin-bottom: 3rem
   }
   .promo__info-title {
-    font-size: 1.1875rem
+    font-size: 1.25rem
   }
   .promo__text {
     font-size: .9375rem
@@ -2286,7 +2279,7 @@ textarea {
     margin-bottom: 5.9375rem
   }
   .projects__title {
-    font-size: 1.4375rem
+    font-size: 1.75rem
   }
   .projects__text-title {
     font-size: .9375rem
@@ -2321,7 +2314,7 @@ textarea {
     font-size: .8125rem
   }
   .benefits-block__number {
-    font-size: 1.1875rem
+    font-size: 1.75rem
   }
   .benefits-block__text {
     font-size: .9375rem
@@ -2524,7 +2517,12 @@ textarea {
     display: flex
   }
   .we-do__items {
-    gap: 1.75rem
+    -webkit-column-gap: 1.75rem;
+    -moz-column-gap: 1.75rem;
+    column-gap: 1.75rem
+  }
+  .we-do__items {
+    row-gap: 1.75rem
   }
   .header._header-scroll {
     padding: .8125rem 0
@@ -2605,9 +2603,6 @@ textarea {
   }
 }
 @media (max-width:40.62375em) {
-  .menu-open .menu {
-    order: 0
-  }
   .menu__body {
     grid-template-columns: 1fr;
     align-content: start;
@@ -2703,7 +2698,6 @@ textarea {
     background: url(../img/main-bg-mob.svg) center/100% repeat-y
   }
   .title {
-    text-transform: uppercase;
     line-height: 150%
   }
   .heading-page--margin .heading-page__title:not(:last-child) {
@@ -2725,6 +2719,9 @@ textarea {
     flex-wrap: wrap;
     gap: .5rem;
     margin-bottom: 2.75rem
+  }
+  .portfolio__slider .swiper-button-next {
+    display: none
   }
   .portfolio__items {
     gap: 1.6875rem
@@ -2836,6 +2833,18 @@ textarea {
     grid-template-columns: repeat(2,1fr);
     gap: 1.5rem
   }
+  .faq__btn {
+    background-color: #fffefc;
+    color: #ef0a0a;
+    border: 2px solid rgba(239,10,10,.15);
+    padding: .875rem 2rem
+  }
+  .discuss .form-block__button {
+    background-color: #fffefc;
+    color: #ef0a0a;
+    border: 2px solid rgba(239,10,10,.15);
+    padding: .875rem 2rem
+  }
   .page-product__container {
     background: url(../img/main-bg-mob.svg) center/100% repeat-y
   }
@@ -2932,6 +2941,9 @@ textarea {
   .spollers__body {
     padding: 0 0 1rem 0
   }
+  .page {
+    padding-top: 4.5625rem
+  }
   .heading-page__actions .actions-block__btn {
     min-width: 7.5rem
   }
@@ -2960,7 +2972,14 @@ textarea {
     gap: .75rem
   }
   .form-block__services {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
+    padding: 1rem 0
+  }
+  .form-block__services .form-block__label {
+    padding-left: 1rem
+  }
+  .form-block__items {
+    padding-left: 1rem
   }
   .footer__title:not(:last-child) {
     margin-bottom: 1.25rem
@@ -2972,7 +2991,10 @@ textarea {
     font-size: .875rem
   }
   .promo__actions:not(:last-child) {
-    margin-bottom: 4.375rem
+    margin-bottom: 6rem
+  }
+  .projects__link {
+    padding: .71875rem 1.5rem
   }
   .about__btn {
     max-width: 100%;
@@ -3025,6 +3047,11 @@ textarea {
     max-width: 90%
   }
 }
+@media (max-width:19.99875em) {
+  .clients__body {
+    row-gap: 2.4375rem
+  }
+}
 @media (min-width:20em) and (max-width:78.75em) {
   @supports ((-moz-column-gap:clamp(2.6875rem ,0.1130319149rem + 12.8723404255vw ,10.25rem)) or (column-gap:clamp(2.6875rem ,0.1130319149rem + 12.8723404255vw ,10.25rem))) {
     .menu__body {
@@ -3040,14 +3067,14 @@ textarea {
       column-gap: calc(2.6875rem + 7.5625 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (font-size:clamp(1.4375rem ,1.2460106383rem + 0.9574468085vw ,2rem)) {
+  @supports (font-size:clamp(1.25rem ,1.164893617rem + 0.4255319149vw ,1.5rem)) {
     .menu__title {
-      font-size: clamp(1.4375rem ,1.2460106383rem + .9574468085vw ,2rem)
+      font-size: clamp(1.25rem ,1.164893617rem + .4255319149vw ,1.5rem)
     }
   }
-  @supports not (font-size:clamp(1.4375rem ,1.2460106383rem + 0.9574468085vw ,2rem)) {
+  @supports not (font-size:clamp(1.25rem ,1.164893617rem + 0.4255319149vw ,1.5rem)) {
     .menu__title {
-      font-size: calc(1.4375rem + .5625 * (100vw - 20rem)/ 58.75)
+      font-size: calc(1.25rem + .25 * (100vw - 20rem)/ 58.75)
     }
   }
   @supports (margin-bottom:clamp(0.9375rem ,0.7247340426rem + 1.0638297872vw ,1.5625rem)) {
@@ -3060,14 +3087,14 @@ textarea {
       margin-bottom: calc(.9375rem + .625 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (font-size:clamp(0.8125rem ,0.6635638298rem + 0.7446808511vw ,1.25rem)) {
+  @supports (font-size:clamp(0.875rem ,0.8324468085rem + 0.2127659574vw ,1rem)) {
     .menu__link {
-      font-size: clamp(.8125rem ,.6635638298rem + .7446808511vw ,1.25rem)
+      font-size: clamp(.875rem ,.8324468085rem + .2127659574vw ,1rem)
     }
   }
-  @supports not (font-size:clamp(0.8125rem ,0.6635638298rem + 0.7446808511vw ,1.25rem)) {
+  @supports not (font-size:clamp(0.875rem ,0.8324468085rem + 0.2127659574vw ,1rem)) {
     .menu__link {
-      font-size: calc(.8125rem + .4375 * (100vw - 20rem)/ 58.75)
+      font-size: calc(.875rem + .125 * (100vw - 20rem)/ 58.75)
     }
   }
   @supports (margin-bottom:clamp(1.6875rem ,0.9002659574rem + 3.9361702128vw ,4rem)) {
@@ -3100,14 +3127,14 @@ textarea {
       font-size: calc(.875rem + .125 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (font-size:clamp(1.4375rem ,1.1609042553rem + 1.3829787234vw ,2.25rem)) {
+  @supports (font-size:clamp(1.75rem ,1.579787234rem + 0.8510638298vw ,2.25rem)) {
     .title {
-      font-size: clamp(1.4375rem ,1.1609042553rem + 1.3829787234vw ,2.25rem)
+      font-size: clamp(1.75rem ,1.579787234rem + .8510638298vw ,2.25rem)
     }
   }
-  @supports not (font-size:clamp(1.4375rem ,1.1609042553rem + 1.3829787234vw ,2.25rem)) {
+  @supports not (font-size:clamp(1.75rem ,1.579787234rem + 0.8510638298vw ,2.25rem)) {
     .title {
-      font-size: calc(1.4375rem + .8125 * (100vw - 20rem)/ 58.75)
+      font-size: calc(1.75rem + .5 * (100vw - 20rem)/ 58.75)
     }
   }
   @supports (gap:clamp(0.4375rem ,0.2460106383rem + 0.9574468085vw ,1rem)) {
@@ -3340,24 +3367,24 @@ textarea {
       height: calc(.25rem + .75 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (margin-bottom:clamp(1.625rem ,0.8164893617rem + 4.0425531915vw ,4rem)) {
+  @supports (margin-bottom:clamp(3rem ,2.6595744681rem + 1.7021276596vw ,4rem)) {
     .promo__info:not(:last-child) {
-      margin-bottom: clamp(1.625rem ,.8164893617rem + 4.0425531915vw ,4rem)
+      margin-bottom: clamp(3rem ,2.6595744681rem + 1.7021276596vw ,4rem)
     }
   }
-  @supports not (margin-bottom:clamp(1.625rem ,0.8164893617rem + 4.0425531915vw ,4rem)) {
+  @supports not (margin-bottom:clamp(3rem ,2.6595744681rem + 1.7021276596vw ,4rem)) {
     .promo__info:not(:last-child) {
-      margin-bottom: calc(1.625rem + 2.375 * (100vw - 20rem)/ 58.75)
+      margin-bottom: calc(3rem + 1 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (font-size:clamp(1.1875rem ,0.9960106383rem + 0.9574468085vw ,1.75rem)) {
+  @supports (font-size:clamp(1.25rem ,1.079787234rem + 0.8510638298vw ,1.75rem)) {
     .promo__info-title {
-      font-size: clamp(1.1875rem ,.9960106383rem + .9574468085vw ,1.75rem)
+      font-size: clamp(1.25rem ,1.079787234rem + .8510638298vw ,1.75rem)
     }
   }
-  @supports not (font-size:clamp(1.1875rem ,0.9960106383rem + 0.9574468085vw ,1.75rem)) {
+  @supports not (font-size:clamp(1.25rem ,1.079787234rem + 0.8510638298vw ,1.75rem)) {
     .promo__info-title {
-      font-size: calc(1.1875rem + .5625 * (100vw - 20rem)/ 58.75)
+      font-size: calc(1.25rem + .5 * (100vw - 20rem)/ 58.75)
     }
   }
   @supports (font-size:clamp(0.9375rem ,0.8311170213rem + 0.5319148936vw ,1.25rem)) {
@@ -3370,24 +3397,24 @@ textarea {
       font-size: calc(.9375rem + .3125 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (width:clamp(2.4375rem ,2.0757978723rem + 1.8085106383vw ,3.5rem)) {
+  @supports (width:clamp(2.4375rem ,2.2460106383rem + 0.9574468085vw ,3rem)) {
     .promo__avatar {
-      width: clamp(2.4375rem ,2.0757978723rem + 1.8085106383vw ,3.5rem)
+      width: clamp(2.4375rem ,2.2460106383rem + .9574468085vw ,3rem)
     }
   }
-  @supports not (width:clamp(2.4375rem ,2.0757978723rem + 1.8085106383vw ,3.5rem)) {
+  @supports not (width:clamp(2.4375rem ,2.2460106383rem + 0.9574468085vw ,3rem)) {
     .promo__avatar {
-      width: calc(2.4375rem + 1.0625 * (100vw - 20rem)/ 58.75)
+      width: calc(2.4375rem + .5625 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (height:clamp(2.4375rem ,2.0757978723rem + 1.8085106383vw ,3.5rem)) {
+  @supports (height:clamp(2.4375rem ,2.2460106383rem + 0.9574468085vw ,3rem)) {
     .promo__avatar {
-      height: clamp(2.4375rem ,2.0757978723rem + 1.8085106383vw ,3.5rem)
+      height: clamp(2.4375rem ,2.2460106383rem + .9574468085vw ,3rem)
     }
   }
-  @supports not (height:clamp(2.4375rem ,2.0757978723rem + 1.8085106383vw ,3.5rem)) {
+  @supports not (height:clamp(2.4375rem ,2.2460106383rem + 0.9574468085vw ,3rem)) {
     .promo__avatar {
-      height: calc(2.4375rem + 1.0625 * (100vw - 20rem)/ 58.75)
+      height: calc(2.4375rem + .5625 * (100vw - 20rem)/ 58.75)
     }
   }
   @supports (font-size:clamp(0.6875rem ,0.5811170213rem + 0.5319148936vw ,1rem)) {
@@ -3410,14 +3437,14 @@ textarea {
       margin-bottom: calc(5.9375rem + 6.3125 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (font-size:clamp(1.4375rem ,0.9906914894rem + 2.2340425532vw ,2.75rem)) {
+  @supports (font-size:clamp(1.75rem ,1.4095744681rem + 1.7021276596vw ,2.75rem)) {
     .projects__title {
-      font-size: clamp(1.4375rem ,.9906914894rem + 2.2340425532vw ,2.75rem)
+      font-size: clamp(1.75rem ,1.4095744681rem + 1.7021276596vw ,2.75rem)
     }
   }
-  @supports not (font-size:clamp(1.4375rem ,0.9906914894rem + 2.2340425532vw ,2.75rem)) {
+  @supports not (font-size:clamp(1.75rem ,1.4095744681rem + 1.7021276596vw ,2.75rem)) {
     .projects__title {
-      font-size: calc(1.4375rem + 1.3125 * (100vw - 20rem)/ 58.75)
+      font-size: calc(1.75rem + 1 * (100vw - 20rem)/ 58.75)
     }
   }
   @supports (font-size:clamp(0.9375rem ,0.8311170213rem + 0.5319148936vw ,1.25rem)) {
@@ -3524,14 +3551,14 @@ textarea {
       font-size: calc(.8125rem + .4375 * (100vw - 20rem)/ 58.75)
     }
   }
-  @supports (font-size:clamp(1.1875rem ,0.8257978723rem + 1.8085106383vw ,2.25rem)) {
+  @supports (font-size:clamp(1.75rem ,1.579787234rem + 0.8510638298vw ,2.25rem)) {
     .benefits-block__number {
-      font-size: clamp(1.1875rem ,.8257978723rem + 1.8085106383vw ,2.25rem)
+      font-size: clamp(1.75rem ,1.579787234rem + .8510638298vw ,2.25rem)
     }
   }
-  @supports not (font-size:clamp(1.1875rem ,0.8257978723rem + 1.8085106383vw ,2.25rem)) {
+  @supports not (font-size:clamp(1.75rem ,1.579787234rem + 0.8510638298vw ,2.25rem)) {
     .benefits-block__number {
-      font-size: calc(1.1875rem + 1.0625 * (100vw - 20rem)/ 58.75)
+      font-size: calc(1.75rem + .5 * (100vw - 20rem)/ 58.75)
     }
   }
   @supports (font-size:clamp(0.9375rem ,0.8311170213rem + 0.5319148936vw ,1.25rem)) {
@@ -3982,14 +4009,28 @@ textarea {
   }
 }
 @media (min-width:47.99875em) and (max-width:78.75em) {
-  @supports (gap:clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem)) {
+  @supports ((-moz-column-gap:clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem)) or (column-gap:clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem))) {
     .we-do__items {
-      gap: clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem)
+      -webkit-column-gap: clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem);
+      -moz-column-gap: clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem);
+      column-gap: clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem)
     }
   }
-  @supports not (gap:clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem)) {
+  @supports not ((-moz-column-gap:clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem)) or (column-gap:clamp(1.75rem ,-4.8837039145rem + 13.8205763993vw ,6rem))) {
     .we-do__items {
-      gap: calc(1.75rem + 4.25 * (100vw - 47.99875rem)/ 30.75125)
+      -webkit-column-gap: calc(1.75rem + 4.25 * (100vw - 47.99875rem)/ 30.75125);
+      -moz-column-gap: calc(1.75rem + 4.25 * (100vw - 47.99875rem)/ 30.75125);
+      column-gap: calc(1.75rem + 4.25 * (100vw - 47.99875rem)/ 30.75125)
+    }
+  }
+  @supports (row-gap:clamp(1.75rem ,-3.3228324052rem + 10.5686760701vw ,5rem)) {
+    .we-do__items {
+      row-gap: clamp(1.75rem ,-3.3228324052rem + 10.5686760701vw ,5rem)
+    }
+  }
+  @supports not (row-gap:clamp(1.75rem ,-3.3228324052rem + 10.5686760701vw ,5rem)) {
+    .we-do__items {
+      row-gap: calc(1.75rem + 3.25 * (100vw - 47.99875rem)/ 30.75125)
     }
   }
   @supports (margin-bottom:clamp(1.25rem ,-3.0423966505rem + 8.9427259055vw ,4rem)) {
@@ -4085,6 +4126,18 @@ textarea {
   @supports not (gap:clamp(1.75rem ,-13.9798522498rem + 25.3712409522vw ,6rem)) {
     .info-section__items {
       gap: calc(1.75rem + 4.25 * (100vw - 61.99875rem)/ 16.75125)
+    }
+  }
+}
+@media (min-width:19.99875em) and (max-width:34.37375em) {
+  @supports (row-gap:clamp(2.4375rem ,1.6549402174rem + 3.9130434783vw ,3rem)) {
+    .clients__body {
+      row-gap: clamp(2.4375rem ,1.6549402174rem + 3.9130434783vw ,3rem)
+    }
+  }
+  @supports not (row-gap:clamp(2.4375rem ,1.6549402174rem + 3.9130434783vw ,3rem)) {
+    .clients__body {
+      row-gap: calc(2.4375rem + .5625 * (100vw - 19.99875rem)/ 14.375)
     }
   }
 }
@@ -4215,14 +4268,16 @@ textarea {
     fill: #bd0808
   }
   .aside-block__link:hover {
-    color: #bd0808!important
+    color: #bd0808
   }
   .aside-block__link:hover path {
-    fill: #bd0808!important
+    fill: #bd0808
+  }
+  .aside-block__arrow:hover path {
+    fill: #bd0808
   }
   .breadcrumbs__link:hover {
-    border: 1px solid #b4b4b4;
-    color: #8c878c
+    background-color: #f5f5f5
   }
   .card-work__img:hover img {
     -webkit-transform: scale(1.1);
@@ -4237,11 +4292,6 @@ textarea {
   .card-work__btn:hover {
     background-color: #bd0808
   }
-  .portfolio__slider:hover .swiper-button-next,
-  .portfolio__slider:hover::after {
-    opacity: 1;
-    visibility: visible
-  }
   .portfolio__img:hover img {
     -webkit-transform: scale(1.1);
     transform: scale(1.1)
@@ -4251,6 +4301,13 @@ textarea {
   }
   .swiper-button-next:hover {
     background-color: #bd0808
+  }
+  .form-block__item:hover .form-block__label {
+    color: #8c878c
+  }
+  .form-block__item:hover .form-block__input,
+  .form-block__item:hover .form-block__textarea {
+    border: 2px solid #eaeaea
   }
   .header__link:hover {
     color: #bd0808

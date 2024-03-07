@@ -4311,10 +4311,6 @@
                     speed: 800,
                     loop: true,
                     loopAdditionalSlides: 1,
-                    autoplay: {
-                        delay: 3e3,
-                        disableOnInteraction: false
-                    },
                     effect: "creative",
                     creativeEffect: {
                         limitProgress: 2,
@@ -4344,6 +4340,12 @@
                 });
                 sliderProjectImage.controller.control = sliderProjectText;
                 sliderProjectText.controller.control = sliderProjectImage;
+                const observer = new MutationObserver((function(mutationsList, observer) {
+                    for (var mutation of mutationsList) if (mutation.type === "attributes" && mutation.attributeName === "class") if (parent.classList.contains("_watcher-view")) sliderProjectImage.autoplay.start(); else sliderProjectImage.autoplay.stop();
+                }));
+                observer.observe(parent, {
+                    attributes: true
+                });
             }));
         }
         const resizableSwiper = (breakpoint, swiperClass, swiperSettings, callback) => {
@@ -4668,10 +4670,29 @@
                 }
             }));
         }), options);
-        let sections = document.querySelectorAll("[data-watch]");
-        if (sections.length) sections.forEach((section => {
+        let sectionsBenefits = document.querySelectorAll(".benefits-block");
+        if (sectionsBenefits.length) sectionsBenefits.forEach((section => {
             observer.observe(section);
         }));
+    }
+    const scrollToNextButton = document.querySelector(".aside-block__arrow");
+    const sections = document.querySelectorAll("section");
+    scrollToNextButton.addEventListener("click", scrollToNextSection);
+    function scrollToNextSection() {
+        const currentSection = document.querySelector("section._watcher-view");
+        let nextSection = null;
+        for (let i = 0; i < sections.length; i++) if (sections[i] === currentSection) if (i + 1 < sections.length) {
+            nextSection = sections[i + 1];
+            break;
+        }
+        if (nextSection) {
+            const offset = 90;
+            const topPos = nextSection.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({
+                top: topPos,
+                behavior: "smooth"
+            });
+        }
     }
     isWebp();
     menuInit();

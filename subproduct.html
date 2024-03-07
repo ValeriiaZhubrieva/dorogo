@@ -7,7 +7,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
 
-	<link rel="stylesheet" href="css/style.min.css?_v=20240303003632">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240307224527">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -183,7 +183,7 @@
 		<main class="page">
 			<div class="page__container">
 				<div class="page__content">
-					<section class="heading-page">
+					<section data-watch data-watch-threshold="0.7" class="heading-page">
 						<ul data-da=".header__container, 767.98" class="breadcrumbs">
 							<li class="breadcrumbs__item">
 								<a href="" class="breadcrumbs__link active">
@@ -229,7 +229,7 @@
 							</div>
 						</div>
 					</section>
-					<section class="about">
+					<section data-watch data-watch-threshold="0.7" class="about">
 						<h3 class="about__title title">
 							Процес роботи
 						</h3>
@@ -306,22 +306,22 @@
 							</svg>
 						</button>
 					</section>
-					<section class="portfolio grid-item">
+					<section data-watch data-watch-threshold="0.7" class="portfolio grid-item">
 						<h3 class="portfolio__title title">
 							Наші роботи
 						</h3>
 						<div class="portfolio__head">
-							<button type="button" class="portfolio__list">
-								<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M2.9502 10.4333V8.66666H14.0502V10.4333H2.9502ZM2.9502 13.5334V11.7667H14.0502V13.5334H2.9502ZM2.9502 7.33333V5.56665H14.0502V7.33333H2.9502ZM2.9502 4.23331V2.46661H14.0502V4.23331H2.9502Z" fill="#232023" />
-								</svg>
-								<span>List</span>
-							</button>
 							<button type="button" class="portfolio__grid active">
 								<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M1.67969 7.33334V1.6797H7.33332V7.33334H1.67969ZM1.67969 14.3203V8.66667H7.33332V14.3203H1.67969ZM8.66665 7.33334V1.6797H14.3203V7.33334H8.66665ZM8.66665 14.3203V8.66667H14.3203V14.3203H8.66665ZM3.44637 5.56665H5.56664V3.44639H3.44637V5.56665ZM10.4333 5.56665H12.5536V3.44639H10.4333V5.56665ZM10.4333 12.5536H12.5536V10.4334H10.4333V12.5536ZM3.44637 12.5536H5.56664V10.4334H3.44637V12.5536Z" fill="#232023" />
 								</svg>
 								<span>Grid</span>
+							</button>
+							<button type="button" class="portfolio__list">
+								<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M2.9502 10.4333V8.66666H14.0502V10.4333H2.9502ZM2.9502 13.5334V11.7667H14.0502V13.5334H2.9502ZM2.9502 7.33333V5.56665H14.0502V7.33333H2.9502ZM2.9502 4.23331V2.46661H14.0502V4.23331H2.9502Z" fill="#232023" />
+								</svg>
+								<span>List</span>
 							</button>
 						</div>
 						<div class="portfolio__slider swiper hide-category">
@@ -418,7 +418,7 @@
 							</button>
 						</div>
 					</section>
-					<section class="review">
+					<section data-watch data-watch-threshold="0.7" class="review">
 						<h3 class="review__title title">
 							Що кажуть наші клієнти?
 						</h3>
@@ -498,14 +498,29 @@
 							</button>
 						</div>
 					</section>
-					<section class="discuss">
+					<section data-watch data-watch-threshold="0.7" class="discuss">
 						<h3 class="discuss__title title">
 							Давайте обговоримо ваш проект
 						</h3>
 						<form action="#" class="form-block">
-							<input autocomplete="off" type="text" name="form[]" placeholder="Імʼя:" class="form-block__input">
-							<input autocomplete="off" type="text" name="form[]" placeholder="Email:" class="form-block__input">
-							<input autocomplete="off" type="tel" name="form[]" placeholder="Телефон:" class="form-block__input">
+							<div class="form-block__item">
+								<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+								<label class="form-block__label">
+									Імʼя:
+								</label>
+							</div>
+							<div class="form-block__item">
+								<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+								<label class="form-block__label">
+									Email:
+								</label>
+							</div>
+							<div class="form-block__item">
+								<input autocomplete="off" type="tel" name="form[]" class="form-block__input" required>
+								<label class="form-block__label">
+									Телефон:
+								</label>
+							</div>
 							<div class="form-block__services">
 								<span class="form-block__label">
 									Послуга:
@@ -537,11 +552,16 @@
 									</label>
 								</div>
 							</div>
-							<textarea class="form-block__textarea" placeholder="Питання:"></textarea>
+							<div class="form-block__item">
+								<textarea class="form-block__textarea" required></textarea>
+								<label class="form-block__label">
+									Питання:
+								</label>
+							</div>
 							<button type="submit" class="form-block__button btn">Надіслати</button>
 						</form>
 					</section>
-					<section class="faq">
+					<section data-watch data-watch-threshold="0.7" class="faq">
 						<h3 class="faq__title title">
 							Питання і відповіді
 						</h3>
@@ -639,11 +659,11 @@
 							</a>
 						</li>
 					</ul>
-					<div class="aside-block__arrow">
+					<button type="button" class="aside-block__arrow">
 						<svg width="18" height="53" viewBox="0 0 18 53" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M10.325 47.8978L15.6141 42.6087L17.4804 44.5L8.99998 52.9805L0.519531 44.5L2.38586 42.6087L7.67496 47.8978L7.67496 0.500019H10.325L10.325 47.8978Z" fill="#DCDCDC" />
 						</svg>
-					</div>
+					</button>
 				</aside>
 			</div>
 		</main>
@@ -761,9 +781,24 @@
 				</div>
 				<div class="popup__body">
 					<form action="#" class="form-block">
-						<input autocomplete="off" type="text" name="form[]" placeholder="Імʼя:" class="form-block__input">
-						<input autocomplete="off" type="text" name="form[]" placeholder="Email:" class="form-block__input">
-						<input autocomplete="off" type="tel" name="form[]" placeholder="Телефон:" class="form-block__input">
+						<div class="form-block__item">
+							<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+							<label class="form-block__label">
+								Імʼя:
+							</label>
+						</div>
+						<div class="form-block__item">
+							<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+							<label class="form-block__label">
+								Email:
+							</label>
+						</div>
+						<div class="form-block__item">
+							<input autocomplete="off" type="tel" name="form[]" class="form-block__input" required>
+							<label class="form-block__label">
+								Телефон:
+							</label>
+						</div>
 						<div class="form-block__services">
 							<span class="form-block__label">
 								Послуга:
@@ -795,7 +830,12 @@
 								</label>
 							</div>
 						</div>
-						<textarea class="form-block__textarea" placeholder="Питання:"></textarea>
+						<div class="form-block__item">
+							<textarea class="form-block__textarea" required></textarea>
+							<label class="form-block__label">
+								Питання:
+							</label>
+						</div>
 						<button type="submit" class="form-block__button btn">Надіслати</button>
 					</form>
 					<ul class="menu__contacts">
@@ -926,14 +966,11 @@
 							</div>
 						</div>
 					</div>
-					<button data-popup="#popup" type="button" class="about__btn btn">
-						Розпочати проект
-					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20240303003632"></script>
+	<script src="js/app.min.js?_v=20240307224527"></script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
 
-	<link rel="stylesheet" href="css/style.min.css?_v=20240303003632">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240307224527">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -183,7 +183,7 @@
 		<main class="page">
 			<div class="page__container">
 				<div class="page__content">
-					<section class="heading-page">
+					<section data-watch data-watch-threshold="0.7" class="heading-page">
 						<h1 class="heading-page__title">
 							Дизайн і розробка сайту
 						</h1>
@@ -207,7 +207,7 @@
 							</div>
 						</div>
 					</section>
-					<section class="we-do">
+					<section data-watch data-watch-threshold="0.7" class="we-do">
 						<h3 class="we-do__title title">
 							Які сайти ми робимо?
 						</h3>
@@ -370,7 +370,7 @@
 							</div>
 						</div>
 					</section>
-					<section class="about">
+					<section data-watch data-watch-threshold="0.7" class="about">
 						<h3 class="about__title title">
 							Процес роботи
 						</h3>
@@ -447,7 +447,7 @@
 							</svg>
 						</button>
 					</section>
-					<section class="portfolio grid-item">
+					<section data-watch data-watch-threshold="0.7" class="portfolio grid-item">
 						<h3 class="portfolio__title title">
 							Наші роботи
 						</h3>
@@ -559,7 +559,7 @@
 							</button>
 						</div>
 					</section>
-					<section class="faq">
+					<section data-watch data-watch-threshold="0.7" class="faq">
 						<h3 class="faq__title title">
 							Питання і відповіді
 						</h3>
@@ -626,7 +626,7 @@
 							Маю інше питання
 						</button>
 					</section>
-					<section class="review">
+					<section data-watch data-watch-threshold="0.7" class="review">
 						<h3 class="review__title title">
 							Що кажуть наші клієнти?
 						</h3>
@@ -694,14 +694,29 @@
 							</button>
 						</div>
 					</section>
-					<section class="discuss">
+					<section data-watch data-watch-threshold="0.7" class="discuss">
 						<h3 class="discuss__title title">
 							Давайте обговоримо ваш проект
 						</h3>
 						<form action="#" class="form-block">
-							<input autocomplete="off" type="text" name="form[]" placeholder="Імʼя:" class="form-block__input">
-							<input autocomplete="off" type="text" name="form[]" placeholder="Email:" class="form-block__input">
-							<input autocomplete="off" type="tel" name="form[]" placeholder="Телефон:" class="form-block__input">
+							<div class="form-block__item">
+								<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+								<label class="form-block__label">
+									Імʼя:
+								</label>
+							</div>
+							<div class="form-block__item">
+								<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+								<label class="form-block__label">
+									Email:
+								</label>
+							</div>
+							<div class="form-block__item">
+								<input autocomplete="off" type="tel" name="form[]" class="form-block__input" required>
+								<label class="form-block__label">
+									Телефон:
+								</label>
+							</div>
 							<div class="form-block__services">
 								<span class="form-block__label">
 									Послуга:
@@ -733,7 +748,12 @@
 									</label>
 								</div>
 							</div>
-							<textarea class="form-block__textarea" placeholder="Питання:"></textarea>
+							<div class="form-block__item">
+								<textarea class="form-block__textarea" required></textarea>
+								<label class="form-block__label">
+									Питання:
+								</label>
+							</div>
 							<button type="submit" class="form-block__button btn">Надіслати</button>
 						</form>
 					</section>
@@ -768,11 +788,11 @@
 							</a>
 						</li>
 					</ul>
-					<div class="aside-block__arrow">
+					<button type="button" class="aside-block__arrow">
 						<svg width="18" height="53" viewBox="0 0 18 53" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M10.325 47.8978L15.6141 42.6087L17.4804 44.5L8.99998 52.9805L0.519531 44.5L2.38586 42.6087L7.67496 47.8978L7.67496 0.500019H10.325L10.325 47.8978Z" fill="#DCDCDC" />
 						</svg>
-					</div>
+					</button>
 				</aside>
 			</div>
 		</main>
@@ -890,9 +910,24 @@
 				</div>
 				<div class="popup__body">
 					<form action="#" class="form-block">
-						<input autocomplete="off" type="text" name="form[]" placeholder="Імʼя:" class="form-block__input">
-						<input autocomplete="off" type="text" name="form[]" placeholder="Email:" class="form-block__input">
-						<input autocomplete="off" type="tel" name="form[]" placeholder="Телефон:" class="form-block__input">
+						<div class="form-block__item">
+							<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+							<label class="form-block__label">
+								Імʼя:
+							</label>
+						</div>
+						<div class="form-block__item">
+							<input autocomplete="off" type="text" name="form[]" class="form-block__input" required>
+							<label class="form-block__label">
+								Email:
+							</label>
+						</div>
+						<div class="form-block__item">
+							<input autocomplete="off" type="tel" name="form[]" class="form-block__input" required>
+							<label class="form-block__label">
+								Телефон:
+							</label>
+						</div>
 						<div class="form-block__services">
 							<span class="form-block__label">
 								Послуга:
@@ -924,7 +959,12 @@
 								</label>
 							</div>
 						</div>
-						<textarea class="form-block__textarea" placeholder="Питання:"></textarea>
+						<div class="form-block__item">
+							<textarea class="form-block__textarea" required></textarea>
+							<label class="form-block__label">
+								Питання:
+							</label>
+						</div>
 						<button type="submit" class="form-block__button btn">Надіслати</button>
 					</form>
 					<ul class="menu__contacts">
@@ -1055,14 +1095,11 @@
 							</div>
 						</div>
 					</div>
-					<button data-popup="#popup" type="button" class="about__btn btn">
-						Розпочати проект
-					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20240303003632"></script>
+	<script src="js/app.min.js?_v=20240307224527"></script>
 </body>
 
 </html>
